@@ -1,118 +1,83 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import { View, Text, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import Card from './src/color_match/components/Card'
 
-import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+const App = () => {
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  const [points, setpoints] = useState(0)
+    const [random1, setrandom1] = useState("")
+    const [random2, setrandom2] = useState("")
+    const [random3, setrandom3] = useState("black")
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+    let colors = ["red","blue","orange","black"]
+
+    const trueButton = () => {
+      if(random3 === random1){
+        setpoints(points+1);
+
+        randomGenerator()
+      }
+
+      else {
+        randomGenerator();
+      }
+    }
+
+    const falseButton = () => {
+      if(random3!== random1){
+        setpoints(points+1);
+
+        randomGenerator()
+      }
+
+      else {
+        randomGenerator();
+      }
+
+    }
+
+   
+    useEffect(() => {
+      randomGenerator()
+    },[])
+
+    const randomGenerator = () => {
+      let r1 = Math.floor(Math.random() * colors.length)
+      let r2 = Math.floor(Math.random() * colors.length)
+      let r3 = Math.floor(Math.random() * colors.length)
+      setrandom1(colors[r1])
+      setrandom2(colors[r2])
+      setrandom3(colors[r3])
+  }
+
+
+
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style = {styles.container}>
+     
+     <Card
+     time = {60}
+     score = {points}
+     color = {random1}
+     random2 = {random2}
+     random3 = {random3}
+
+     correctButton = {trueButton}
+     unCorrectButton = {falseButton}
+     
+     />
+
     </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  container: {
+    flex: 1,
+    backgroundColor: '#e0e0e0',
   },
 });
 
-export default App;
+
+export default App
