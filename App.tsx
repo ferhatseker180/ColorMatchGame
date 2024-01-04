@@ -2,6 +2,25 @@ import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Card from './src/color_match/components/Card'
 
+
+const CountdownTimer = ({ onCountdownFinish }: any) => {
+  const [countdown, setCountdown] = useState(20);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCountdown((prevCountdown) => (prevCountdown > 0 ? prevCountdown - 1 : 0));
+    }, 1000);
+
+    return () => {
+      clearInterval(intervalId);
+      onCountdownFinish();
+    };
+  }, [onCountdownFinish]);
+
+  // CountdownTimer bileşeni içinde hiçbir şey gösterilmeyecek
+  return null;
+};
+
 const App = () => {
 
   const [points, setpoints] = useState(0)
@@ -9,8 +28,13 @@ const App = () => {
     const [random2, setrandom2] = useState("")
     const [random3, setrandom3] = useState("black")
 
+    const [countdown, setCountdown] = useState(20);
 
     let colors = ["red","blue","orange","black"]
+
+    const handleCountdownFinish = () => {
+      console.log("Süre Bitti")
+    };
 
     const trueButton = () => {
       if(random3 === random1){
@@ -40,6 +64,16 @@ const App = () => {
    
     useEffect(() => {
       randomGenerator()
+
+      const intervalId = setInterval(() => {
+        setCountdown((prevCountdown) => (prevCountdown > 0 ? prevCountdown - 1 : 0));
+      }, 1000);
+
+      return () => {
+        clearInterval(intervalId);
+        handleCountdownFinish();
+      };
+
     },[])
 
     const randomGenerator = () => {
@@ -57,7 +91,7 @@ const App = () => {
     <View style = {styles.container}>
      
      <Card
-     time = {60}
+     time = {countdown}
      score = {points}
      color = {random1}
      random2 = {random2}
@@ -67,6 +101,8 @@ const App = () => {
      unCorrectButton = {falseButton}
      
      />
+
+   <CountdownTimer onCountdownFinish={handleCountdownFinish} />
 
     </View>
   )
