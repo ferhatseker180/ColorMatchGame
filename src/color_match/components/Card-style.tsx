@@ -11,59 +11,41 @@ export default StyleSheet.create({
   secondView: {
     alignItems: 'center',
     padding: 5,
-    margin: 10,
+    margin: 5,
   },
 
-  timeStyle: {
-    borderWidth: 1,
-    borderRadius: 50,
-    borderColor: 'black',
-    color: 'black',
-    backgroundColor : 'white',
-    fontSize: 32,
-    padding: 10,
-    margin: 10,
-  },
   scoreStyle: {
     borderWidth: 1,
-    borderColor: 'green',
-    backgroundColor : 'white',
-    color: 'black',
-    fontSize: 48,
+    borderRadius : 25,
+    borderColor : '#e0e0e0',
+    backgroundColor : 'steelblue',
+    color: 'white',
+    fontSize: 42,
+    marginTop : 8,
+    marginBottom : 30,
     fontWeight: 'bold',
     textAlign: 'center',
   },
 
+  circleTimerStyle : {
+    margin : 10,
+  },
+
   questionView: {
     alignItems: 'center',
-    padding: 10,
-    paddingBottom : 50,
+    backgroundColor:'#e0e0e0',
+    marginTop : 30,
+    marginBottom : 30,
   },
 
   questionStyle: {
     textAlign: 'center',
-    fontSize: 28,
-    color: 'teal',
+    fontSize: 24,
+    color: 'black',
+    fontWeight:'400',
   },
 
-  option1ViewStyle: {
-    borderStyle: 'solid',
-    borderWidth: 2,
-    width: '50%',
-    height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  option2ViewStyle: {
-    borderStyle: 'solid',
-    borderWidth: 2,
-    width: '50%',
-    height: 150,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
+ 
   firstTextStyle: {
     fontSize: 35,
     fontWeight: '600',
@@ -79,17 +61,6 @@ export default StyleSheet.create({
     marginEnd : 20,
   },
 
-  secondTextStyle: {
-    fontSize: 35,
-    fontWeight: '600',
-    borderWidth : 1,
-    width : '50%',
-    height : 150,
-    borderColor : 'black',
-    textAlign : 'center',
-    textAlignVertical : 'center',
-    backgroundColor :'white',
-  },
 
   correctButtonStyle: {
     borderStyle: 'solid',
@@ -100,6 +71,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     color : 'white',
     marginEnd : 10,
+    marginBottom : 10,
+    marginTop : 40,
     backgroundColor : 'blue',
   },
 
@@ -108,6 +81,8 @@ export default StyleSheet.create({
     borderWidth: 1,
     width: '40%',
     height: 60,
+    marginBottom : 10,
+    marginTop : 40,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor : 'red',

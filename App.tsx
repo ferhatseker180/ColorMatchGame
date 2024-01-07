@@ -1,25 +1,7 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Button } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Card from './src/color_match/components/Card'
 
-
-const CountdownTimer = ({ onCountdownFinish }: any) => {
-  const [countdown, setCountdown] = useState(20);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCountdown((prevCountdown) => (prevCountdown > 0 ? prevCountdown - 1 : 0));
-    }, 1000);
-
-    return () => {
-      clearInterval(intervalId);
-      onCountdownFinish();
-    };
-  }, [onCountdownFinish]);
-
-  // CountdownTimer bileşeni içinde hiçbir şey gösterilmeyecek
-  return null;
-};
 
 const App = () => {
 
@@ -28,13 +10,8 @@ const App = () => {
     const [random2, setrandom2] = useState("")
     const [random3, setrandom3] = useState("black")
 
-    const [countdown, setCountdown] = useState(20);
-
     let colors = ["red","blue","orange","black"]
-
-    const handleCountdownFinish = () => {
-      console.log("Süre Bitti")
-    };
+    let duration = 60;
 
     const trueButton = () => {
       if(random3 === random1){
@@ -65,15 +42,6 @@ const App = () => {
     useEffect(() => {
       randomGenerator()
 
-      const intervalId = setInterval(() => {
-        setCountdown((prevCountdown) => (prevCountdown > 0 ? prevCountdown - 1 : 0));
-      }, 1000);
-
-      return () => {
-        clearInterval(intervalId);
-        handleCountdownFinish();
-      };
-
     },[])
 
     const randomGenerator = () => {
@@ -86,24 +54,23 @@ const App = () => {
   }
 
 
-
   return (
+
     <View style = {styles.container}>
-     
+
      <Card
-     time = {countdown}
      score = {points}
+     duration = {duration}
      color = {random1}
      random2 = {random2}
      random3 = {random3}
 
-     correctButton = {trueButton}
+  
+    correctButton = {trueButton}
      unCorrectButton = {falseButton}
-     
+ 
      />
-
-   <CountdownTimer onCountdownFinish={handleCountdownFinish} />
-
+     
     </View>
   )
 }
@@ -113,7 +80,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#e0e0e0',
   },
-});
 
+  timer: {
+    justifyContent : 'center',
+    alignItems : 'center',
+  }
+
+});
 
 export default App

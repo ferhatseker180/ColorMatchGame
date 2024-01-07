@@ -1,0 +1,7 @@
+{
+    "explorer.fileNesting.enabled": false,
+    "outline.showFiles": true,
+    "outline.showModules": true,
+    "scm.defaultViewMode": "list"
+
+}
