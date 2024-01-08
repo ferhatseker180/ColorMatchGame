@@ -1,14 +1,17 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import Menu_card from '../components/opening_page_components/Menu_card';
+import Menu_card from '../components/opening_page/Menu_card';
 
 const HomeScreen = ({ navigation }: any) => {
+
+
   return (
 
+  
     <View style = {styles.container}>
      
      <Menu_card />
-
+    
     </View>
 
   )
