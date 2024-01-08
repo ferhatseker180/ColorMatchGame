@@ -59,9 +59,9 @@ const App = () => {
 
     <View style = {styles.container}>
 
-    <Menu_card />
-{/* 
-   <Card
+      <Menu_card />
+
+     <Card
      score = {points}
      duration = {duration}
      color = {random1}
@@ -73,8 +73,7 @@ const App = () => {
      unCorrectButton = {falseButton}
  
      />
-   */} 
-        
+     
     </View>
   )
 }
