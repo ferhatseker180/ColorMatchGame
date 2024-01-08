@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, Button } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import Card from './src/color_match/components/Card'
+ import Card from './src/color_match/components/game_page/Card'
+ import Menu_card from './src/color_match/components/opening_page/Menu_card'
 
 
 const App = () => {
@@ -57,6 +58,8 @@ const App = () => {
   return (
 
     <View style = {styles.container}>
+
+      <Menu_card />
 
      <Card
      score = {points}
